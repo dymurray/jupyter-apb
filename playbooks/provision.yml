@@ -1,0 +1,9 @@
+- name: jupyter-apb playbook to provision the application
+  hosts: localhost
+  gather_facts: false
+  connection: local
+  vars:
+    apb_action: provision
+  roles:
+  - role: jupyter-apb
+    

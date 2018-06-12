@@ -1,0 +1,18 @@
+version: 1.0
+name: jupyter-apb
+description: your description
+bindable: False
+async: optional
+metadata:
+  displayName: jupyter-apb
+plans:
+  - name: default
+    description: This default plan deploys jupyter-apb
+    free: True
+    metadata: {}
+    parameters:
+      - name: notebook_password
+        type: string
+        title: Password to access Jupiter
+        required: True
+

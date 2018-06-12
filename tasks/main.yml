@@ -1,0 +1,20 @@
+---
+# tasks file for jupyter-apb
+
+- name: copy files
+  copy:
+    src: images.json
+    dest: /tmp
+
+- name: create builds
+  shell: oc create -f /tmp/images.json
+
+- pause:
+    minutes: 3
+
+- name: start jupiter
+  shell: oc new-app s2i-minimal-notebook:3.5 --name my-notebook --env JUPYTER_NOTEBOOK_PASSWORD={{ notebook_password }}
+
+- name: create route
+  shell: oc create route edge my-notebook --service my-notebook --insecure-policy Redirect
+

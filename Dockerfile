@@ -1,0 +1,15 @@
+FROM ansibleplaybookbundle/apb-base
+
+LABEL "com.redhat.apb.spec"=\
+"dmVyc2lvbjogMS4wCm5hbWU6IGp1cHl0ZXItYXBiCmRlc2NyaXB0aW9uOiB5b3VyIGRlc2NyaXB0\
+aW9uCmJpbmRhYmxlOiBGYWxzZQphc3luYzogb3B0aW9uYWwKbWV0YWRhdGE6CiAgZGlzcGxheU5h\
+bWU6IGp1cHl0ZXItYXBiCnBsYW5zOgogIC0gbmFtZTogZGVmYXVsdAogICAgZGVzY3JpcHRpb246\
+IFRoaXMgZGVmYXVsdCBwbGFuIGRlcGxveXMganVweXRlci1hcGIKICAgIGZyZWU6IFRydWUKICAg\
+IG1ldGFkYXRhOiB7fQogICAgcGFyYW1ldGVyczoKICAgICAgLSBuYW1lOiBub3RlYm9va19wYXNz\
+d29yZAogICAgICAgIHR5cGU6IHN0cmluZwogICAgICAgIHRpdGxlOiBQYXNzd29yZCB0byBhY2Nl\
+c3MgSnVwaXRlcgogICAgICAgIHJlcXVpcmVkOiBUcnVlCgo="
+
+COPY playbooks /opt/apb/actions
+COPY . /opt/ansible/roles/jupyter-apb
+RUN chmod -R g=u /opt/{ansible,apb}
+USER apb
